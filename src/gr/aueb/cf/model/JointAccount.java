@@ -1,4 +1,4 @@
-package gr.aueb.cf.model;
+package model;
 
 public class JointAccount extends Account{
     private User secondHolder = new User();
@@ -20,13 +20,13 @@ public class JointAccount extends Account{
 
     @Override
     public String toString() {
-        return "JointAccount{" + "First Holder=" + getHolder() +
-                ", secondHolder=" + secondHolder + ", iban: " + getIban() +
-                ", balance: " + getBalance() + '}';
+        return "JointAccount{" +
+                "secondHolder=" + secondHolder +
+                '}';
     }
 
-    @Override
-    protected boolean isSsnValid(String ssn) {
-        return super.isSsnValid(ssn) || secondHolder.getSsn().equals(ssn);
-    }
+//    @Override
+//    protected boolean isSsnValid(String ssn) {
+//        return super.isSsnValid(ssn) || secondHolder.getSsn().equals(ssn);
+//    }
 }

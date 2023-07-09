@@ -1,28 +1,28 @@
-package gr.aueb.cf.model;
+package model;
 
-import gr.aueb.cf.exceptions.InsufficientBalanceException;
-import gr.aueb.cf.exceptions.NegativeAmountException;
-import gr.aueb.cf.exceptions.SsnNotValidException;
+import service.exceptions.InsufficientBalanceException;
+import service.exceptions.NegativeAmountException;
+import service.exceptions.SsnNotValidException;
 
-public class Account extends IdentifiableEntity {
-    private User holder = new User();
+public class Account extends AbstractEntity {
+    private User user = new User();
     private String iban;
     private double balance;
 
     public Account(){}
 
-    public Account(User holder, String iban, double balance) {
-        this.holder = holder;
+    public Account(User user, String iban, double balance) {
+        this.user = user;
         this.iban = iban;
         this.balance = balance;
     }
 
-    public User getHolder() {
-        return holder;
+    public User getUser() {
+        return user;
     }
 
-    public void setHolder(User holder) {
-        this.holder = holder;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getIban() {
@@ -44,59 +44,17 @@ public class Account extends IdentifiableEntity {
     @Override
     public String toString() {
         return "Account{" +
-                "holder=" + holder +
+                "user=" + user +
                 ", iban='" + iban + '\'' +
                 ", balance=" + balance +
                 '}';
     }
 
-    // Public API
-
-    /**
-     *
-     * @param amount
-     * @throws NegativeAmountException
-     */
-    public void deposit(double amount) throws NegativeAmountException {
-        try {
-            if (amount < 0) {
-                throw new NegativeAmountException(amount);
-            }
-
-            balance += amount;
-        } catch (NegativeAmountException e) {
-            System.err.println("Error: Negative amount");
-            throw e;
-        }
-    }
-
-    /**
-     *
-     * @param amount
-     * @param ssn
-     * @throws InsufficientBalanceException
-     * @throws SsnNotValidException
-     * @throws NegativeAmountException
-     */
-    public void withdraw(double amount,String ssn)
-            throws InsufficientBalanceException, SsnNotValidException, NegativeAmountException {
-        try {
-            if (amount < 0) throw new NegativeAmountException(amount);
-            if (amount > balance) throw new InsufficientBalanceException(getBalance(),amount);
-            if (!isSsnValid(ssn)) throw new SsnNotValidException(ssn);
-
-            balance -= amount;
-        } catch (InsufficientBalanceException | SsnNotValidException | NegativeAmountException e) {
-            System.out.println("Error: withdrawal");
-            throw e;
-        }
-    }
-
-    protected boolean isSsnValid(String ssn) {
-        if (ssn == null || getHolder().getSsn() == null) {
+    public boolean isSsnValid(String ssn) {
+        if (ssn == null || getUser().getSsn() == null) {
             return false;
         }
 
-        return holder.getSsn().equals(ssn);
+        return user.getSsn().equals(ssn);
     }
 }

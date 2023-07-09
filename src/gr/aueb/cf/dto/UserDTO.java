@@ -1,23 +1,26 @@
-package model;
+package dto;
 
-public class User extends AbstractEntity {
+public class UserDTO {
+    private long id;
     private String firstname;
     private String lastname;
     private String ssn;
 
-    public User(){}
+    public UserDTO() {}
 
-    public User(String firstname, String lastname, String ssn) {
+    public UserDTO(long id, String firstname, String lastname, String ssn) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.ssn = ssn;
     }
 
-    // Copy Constructor
-    public User(User user) {
-        firstname = user.getFirstname();
-        lastname = user.getLastname();
-        ssn = user.getSsn();
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -42,14 +45,5 @@ public class User extends AbstractEntity {
 
     public void setSsn(String ssn) {
         this.ssn = ssn;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", ssn='" + ssn + '\'' +
-                '}';
     }
 }

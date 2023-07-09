@@ -1,13 +1,9 @@
-package gr.aueb.cf.model;
+package model;
 
-public class IdentifiableEntity {
-    private long id;
 
-    public long getId() {
-        return id;
-    }
+@FunctionalInterface
+public interface IdentifiableEntity {
 
-    public void setId(long id) {
-        this.id = id;
-    }
+
+    long getId();
 }
