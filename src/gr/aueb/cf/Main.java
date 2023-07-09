@@ -1,32 +1,57 @@
-package gr.aueb.cf;
+import dao.AccountDAOImpl;
+import dao.IAccountDAO;
+import dto.AccountDTO;
+import dto.UserDTO;
+import model.Account;
+import service.AccountServiceImpl;
+import service.IAccountService;
+import service.exceptions.*;
 
-import gr.aueb.cf.exceptions.InsufficientBalanceException;
-import gr.aueb.cf.exceptions.NegativeAmountException;
-import gr.aueb.cf.exceptions.SsnNotValidException;
-import gr.aueb.cf.model.Account;
-import gr.aueb.cf.model.OverdraftAccount;
-import gr.aueb.cf.model.OverdraftJointAccount;
-import gr.aueb.cf.model.User;
+import java.util.List;
 
+/**
+ * The entry point for the application, demonstrating the usage of the account service.
+ */
 public class Main {
 
+    // Wiring
+    private final static IAccountDAO dao = new AccountDAOImpl();
+    private final static IAccountService service = new AccountServiceImpl(dao);
+
     public static void main(String[] args) {
-        User a8an = new User("Ath", "A.", "12345");
-        User anna = new User("Anna", "G.", "56789");
-        Account account = new Account(a8an, "GR12345", 100);
-        Account overA8an = new OverdraftAccount(a8an, "GR23456", 50);
-        Account overJointAccount = new OverdraftJointAccount(a8an, "GR23567", 200.5, anna);
-
         try {
-            System.out.println("Account: \n" + account);
-            System.out.println("Overdraft: \n" + overA8an);
+            // Create user and account data transfer objects
+            UserDTO userDTO1 = new UserDTO(1L, "Alice", "Wonderland", "12345");
+            AccountDTO accountDTO1 = new AccountDTO(1L, userDTO1, "GR123456", 100.0);
 
-            overJointAccount.deposit(100);
-            overJointAccount.withdraw(50, "16789");
+            UserDTO userDTO2 = new UserDTO(2L, "Bob", "M.", "12345");
+            AccountDTO accountDTO2 = new AccountDTO(2L, userDTO2, "GR123457", 1000.0);
 
-            System.out.println("Overdraft joint account: \n" + overJointAccount);
-        } catch (NegativeAmountException | InsufficientBalanceException | SsnNotValidException e) {
-            System.out.println(e.getMessage());
+            // Insert the account DTOs into the system
+            service.insertAccount(accountDTO1);
+            service.insertAccount(accountDTO2);
+
+            // Deposit 50.0 to the account with ID 1L
+            Account depositedAccount = service.deposit(1L, 50.0);
+            System.out.println("Deposited Account: " + depositedAccount);
+
+            // Withdraw 900.0 from the account with ID 2L
+            Account withdrawnAccount = service.withdraw(2L, 900.0, "12345");
+            System.out.println("Withdrawn Account: " + withdrawnAccount);
+
+            // Delete the account with ID 1L
+            service.deleteAccount(1L);
+
+            // Retrieve all accounts
+            System.out.println("Retrieve all accounts");
+            List<Account> accounts = service.getAllAccounts();
+            for (Account account : accounts) {
+                System.out.println(account);
+            }
+        } catch (AccountNotFoundException | IbanAlreadyExistsException |
+                 UserIdAlreadyExistsException | InsufficientBalanceException |
+                 SsnNotValidException | NegativeAmountException e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
