@@ -1,4 +1,4 @@
-package model;
+package gr.aueb.cf.model;
 
 public class User extends AbstractEntity {
     private String firstname;

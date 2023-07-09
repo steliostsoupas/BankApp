@@ -1,7 +1,4 @@
-package model;
-
-import service.exceptions.NegativeAmountException;
-import service.exceptions.SsnNotValidException;
+package gr.aueb.cf.model;
 
 public class OverdraftAccount extends Account{
 

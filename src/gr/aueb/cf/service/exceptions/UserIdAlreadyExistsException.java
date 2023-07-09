@@ -1,6 +1,6 @@
-package service.exceptions;
+package gr.aueb.cf.service.exceptions;
 
-import model.Account;
+import gr.aueb.cf.model.Account;
 
 public class UserIdAlreadyExistsException extends Exception {
     private static final long serialVersionUID = 1L;

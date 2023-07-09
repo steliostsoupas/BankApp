@@ -1,7 +1,7 @@
-package model;
+package gr.aueb.cf.model;
 
-import service.exceptions.NegativeAmountException;
-import service.exceptions.SsnNotValidException;
+import gr.aueb.cf.service.exceptions.NegativeAmountException;
+import gr.aueb.cf.service.exceptions.SsnNotValidException;
 
 public class OverdraftJointAccount extends JointAccount {
 

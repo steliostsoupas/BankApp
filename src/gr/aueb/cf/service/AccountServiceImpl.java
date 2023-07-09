@@ -1,11 +1,11 @@
-package service;
+package gr.aueb.cf.service;
 
-import dao.IAccountDAO;
-import dto.AccountDTO;
-import dto.UserDTO;
-import model.Account;
-import model.User;
-import service.exceptions.*;
+import gr.aueb.cf.dao.IAccountDAO;
+import gr.aueb.cf.dto.AccountDTO;
+import gr.aueb.cf.dto.UserDTO;
+import gr.aueb.cf.model.Account;
+import gr.aueb.cf.model.User;
+import gr.aueb.cf.service.exceptions.*;
 
 import java.util.List;
 

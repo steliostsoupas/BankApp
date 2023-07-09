@@ -1,6 +1,6 @@
-package dao;
+package gr.aueb.cf.dao;
 
-import model.Account;
+import gr.aueb.cf.model.Account;
 
 import java.util.List;
 

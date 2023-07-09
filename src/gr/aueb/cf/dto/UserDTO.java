@@ -1,4 +1,4 @@
-package dto;
+package gr.aueb.cf.dto;
 
 public class UserDTO {
     private long id;

@@ -1,4 +1,4 @@
-package service.exceptions;
+package gr.aueb.cf.service.exceptions;
 
 public class SsnNotValidException extends Exception {
     private static final long serialVersionUID = 1L;

@@ -1,8 +1,8 @@
-package service;
+package gr.aueb.cf.service;
 
-import dto.AccountDTO;
-import model.Account;
-import service.exceptions.*;
+import gr.aueb.cf.dto.AccountDTO;
+import gr.aueb.cf.model.Account;
+import gr.aueb.cf.service.exceptions.*;
 
 import java.util.List;
 

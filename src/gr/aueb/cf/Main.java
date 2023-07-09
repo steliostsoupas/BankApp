@@ -1,16 +1,18 @@
-import dao.AccountDAOImpl;
-import dao.IAccountDAO;
-import dto.AccountDTO;
-import dto.UserDTO;
-import model.Account;
-import service.AccountServiceImpl;
-import service.IAccountService;
-import service.exceptions.*;
+package gr.aueb.cf;
+
+import gr.aueb.cf.dao.AccountDAOImpl;
+import gr.aueb.cf.dao.IAccountDAO;
+import gr.aueb.cf.dto.AccountDTO;
+import gr.aueb.cf.dto.UserDTO;
+import gr.aueb.cf.model.Account;
+import gr.aueb.cf.service.AccountServiceImpl;
+import gr.aueb.cf.service.IAccountService;
+import gr.aueb.cf.service.exceptions.*;
 
 import java.util.List;
 
 /**
- * The entry point for the application, demonstrating the usage of the account service.
+ * The entry point for the application, demonstrating the usage of the account gr.aueb.cf.service.
  */
 public class Main {
 

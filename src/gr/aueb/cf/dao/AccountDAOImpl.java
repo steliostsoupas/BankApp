@@ -1,12 +1,12 @@
-package dao;
+package gr.aueb.cf.dao;
 
-import model.Account;
+import gr.aueb.cf.model.Account;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AccountDAOImpl implements IAccountDAO{
+public class AccountDAOImpl implements IAccountDAO {
     private static final List<Account> accounts = new ArrayList<>();
 
     @Override

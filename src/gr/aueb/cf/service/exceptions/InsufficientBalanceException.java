@@ -1,4 +1,4 @@
-package service.exceptions;
+package gr.aueb.cf.service.exceptions;
 
 public class InsufficientBalanceException extends Exception {
     private static final long serialVersionUID = 1L;

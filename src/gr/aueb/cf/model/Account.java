@@ -1,8 +1,4 @@
-package model;
-
-import service.exceptions.InsufficientBalanceException;
-import service.exceptions.NegativeAmountException;
-import service.exceptions.SsnNotValidException;
+package gr.aueb.cf.model;
 
 public class Account extends AbstractEntity {
     private User user = new User();

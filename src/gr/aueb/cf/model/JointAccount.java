@@ -1,4 +1,4 @@
-package model;
+package gr.aueb.cf.model;
 
 public class JointAccount extends Account{
     private User secondHolder = new User();

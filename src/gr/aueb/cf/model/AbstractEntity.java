@@ -1,4 +1,4 @@
-package model;
+package gr.aueb.cf.model;
 
 public abstract class AbstractEntity implements IdentifiableEntity {
     private long id;
